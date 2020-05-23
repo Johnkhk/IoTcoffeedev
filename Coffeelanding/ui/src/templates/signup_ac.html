@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="login.css">
+<div class="container">
+    <div class="form">
+        <form id="myForm" action="/newac" method="POST">
+        <div class="form-title">
+          <h2>Welcome back</h2>
+          <p>Sign up</p>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" 
+                 name="username" 
+                 id="username"
+                 placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" 
+                 name="password" 
+                 id="password"
+                 placeholder="************">
+        </div>
+        <div class="form-group button">
+          <button type="button" onclick="checksubmit()">Sign Up</button>
+
+          <a id="badun">Username can't be empty</a>
+            </br>
+          <a id="badpw">Password has to be atleast 8 characters</a>
+        
+          <button type="button" onclick="back()">Cancel</button>
+        </div>
+          
+      </form>
+     
+      
+    </div>
+  </div>
+  <script>
+  function back(){
+    window.location.href ="/";
+  }
+  //var item = document.getElementById('badin');
+  //item.setAttribute('hidden', 'true');
+  //item.style.display = "none";
+  function checksubmit() {
+    var pwInput = document.getElementById("password");
+    var unInput = document.getElementById("username");
+    if(pwInput.value.length <8)
+    {
+        var x = document.getElementById("badpw");
+        x.style.display = "block";
+        //alert("Password has to be atleast 8 characters");
+    } 
+    else if(unInput.value.length <1)
+    {
+        var y = document.getElementById("badun");
+        y.style.display = "block";
+    }
+    else 
+    {
+        document.getElementById("myForm").submit();
+    }
+  }
+
+  
+</script>
+<style>
+#badpw{
+  margin-top: 10px;
+  margin-bottom: 0;
+  color:red;
+  display: none;
+}
+
+#badun{
+  margin-top: 10px;
+  color:red;
+  display: none;
+}
+</style>

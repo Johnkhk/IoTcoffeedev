@@ -1,0 +1,118 @@
+<!DOCTYPE html> <!-- Button to open the modal login form -->
+<link rel="stylesheet" type="text/css" href="portal.css">
+<html>
+
+<body>
+  <h1 align='center'>Welcome Admins!</h1>
+
+  <p align='center'>Admin Portal.</p>
+
+  <table id="myTable" style="width:30%" align='center'>
+    <tr>
+      <th>List of Users</th>
+      <th>Status</th>
+      <th>Revoke Access</th>
+      <th>Grant Access</th>
+    </tr>
+
+    <script>
+      var count = 0;
+      var myarray = new Array();
+    </script>
+
+    {% for user in users %}
+
+    <tr>
+      <td class="Username">{{user.Username}}</td>
+
+      <td class="Status"> {{user.Status}}</td>
+
+      <td> <button class="verify" id='button1' onclick="verify_user()">Verify User </button> </td>
+      <td> <button class="void" id='button2' onclick="void_user()">Void User</button> </td>
+      </form>
+    </tr>
+</body>
+
+</html>
+
+<script>
+  count++;
+</script>
+{% endfor %}
+
+</table>
+<script>
+  function verify_user() {
+    for (var i = 0; i < count; i++) {
+      let number = i;
+      document.getElementsByClassName("verify")[number].onclick = function () {
+
+        // Set the URL you will be sending the POST
+        let post_URL = "http://localhost:5001/change_the_status";
+        // Build your POST Request
+        let request = {};
+        request["Username"] = document.getElementsByClassName("Username")[number].innerHTML
+        request["Status"] = "Valid";
+
+        // Send the POST and receive a response 
+        fetch(post_URL, 
+        {
+          method: "POST",
+          body: JSON.stringify(request)  //Sending data as a JSON string
+                                         //NOTE: request.toString() will return the string "[object Object]"
+        })
+        // After sending, get the response
+        .then((response) =>{
+          console.log("Response Received")
+          // Change the page to what you want
+          document.getElementsByClassName("Status")[number].innerHTML = "Valid"
+        })
+        // If there is an error
+        .catch((error)=>{
+              console.log("Massive Error")
+              console.error(error);
+        })
+      };
+    }
+  }
+
+  function void_user() {
+      for (var i = 0; i < count; i++) {
+        let number = i;
+        document.getElementsByClassName("void")[number].onclick = function () {
+
+          // Set the URL you will be sending the POST
+          let post_URL = "http://localhost:5001/change_the_status";
+         
+          // Build your POST Request
+          let request = {};
+          request["Username"] = document.getElementsByClassName("Username")[number].innerHTML
+          request["Status"] = "Void";
+          
+          // Send the POST and receive a response 
+          fetch(post_URL, 
+          {
+            method: "POST",
+            body: JSON.stringify(request)  //Sending data as a JSON string
+                                          //NOTE: request.toString() will return the string "[object Object]"
+          })
+          // After sending, get the response
+          .then((response) =>{
+            console.log("Response Received")
+            // Change the page to what you want
+            document.getElementsByClassName("Status")[number].innerHTML = "Void"
+          })
+          // If there is an error
+          .catch((error)=>{
+                console.log("Massive Error")
+                console.error(error);
+          })
+
+          // As the call is Asynchronous, This statement will be executed before the response is received with the server. 
+          console.log("Fetch statement completed");
+        }
+      }
+    }
+
+
+</script>

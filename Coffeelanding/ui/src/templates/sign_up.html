@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<body id="top">
+
+<link rel="stylesheet" type="text/css" href="sign_up.css">
+
+
+<script>
+  function portal() {
+    window.location.href ="/";
+  }
+
+</script>
+
+
+<body>
+  <h1 id="boom"align='center'>Please sign up for our newsletter!</h1 al>
+  <form action="/new_user" method="POST">
+    <div class="container">
+      <p>Please enter your information below</p>
+      <hr>
+      <label for="First name"><b>First name</b></label>
+      <input type="text" placeholder="Enter first name" name="firstname" id = "firstname" required>
+
+      <label for="Last name"><b>Last name</b></label>
+      <input type="text" placeholder="Enter last name" name="lastname" id = "lastname" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter email" name="email" id = "email" required>
+      </hr>
+
+      <div class="w3-container">
+        <p align='center'> <button id="cancel" onclick= "portal()">Cancel</button></p>
+        <p align='center'> <button class="w3-button w3-round-xxlarge w3-teal" type = "submit">Sign Up</button></p>  
+      </div>
+    </div>
+  </form>
+</body>
+
+</body>
+</html>

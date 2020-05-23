@@ -1,0 +1,142 @@
+<html>
+
+  <httpProtocol>
+    <customHeaders>
+      <add name="Access-Control-Allow-Origin" value="*" />
+      <add name="Access-Control-Allow-Headers" value="Origin, X-Requested-With, Content-Type, Accept" />
+    </customHeaders>
+  </httpProtocol>
+
+
+<link rel="stylesheet" type="text/css" href="metrics.css">
+<title>Metrics</title>
+
+<div>
+  <header>User Metrics</header>
+  <p id="legu">Currrently have {{numuser}} customers signed up for our newsletter! (Updated Every Minute)</p>
+  <p>Please refresh if page not updating from DB</p>
+</div>
+
+<div id="readydiv">
+<header>Product Readiness</header>
+  <!-- javascript timer, connect to serrver, load readiness in JSON, update everry minute -->
+  <div class = "subready">
+
+    <table id="table">
+      <colgroup>
+       <col span="1" style="background-color:white;">
+       <col span="2" style="background-color:white;">
+     </colgroup>
+      <!--
+      <tr>
+        <td>Time until Launch</td>
+      </tr>-->
+      <script>var count2=0; </script>
+      {% for nummetrics in lengthg %}
+      <tr>
+        <td class="metric">Hardware</td>
+        <td class="descr">Our hardware prototype is fininshed and fully functional. Last measures include improving wire management and making the build more compact. Taste tests have been done and the metallic taste can be improved upon through more usage of the system.</td>
+        <td class="readiness">Readiness</td>
+      </tr>
+      <script>
+        count2++;
+      </script>
+      {% endfor %}
+    </table>
+    <!--<p style="transform: rotate(90deg); font-size:20px;">Readiness</p>-->
+
+  </div>
+</div>
+
+<div>
+  <header>Dynamic News Feed</header>
+
+    <table>
+      <tr>
+        <th id="pnews" colspan="2">Product News...</th>
+      </tr>
+      <script>var count1=0;</script>
+      {% for numnews in length %}
+      <tr>
+        <th class="title">subtitle</th> <th class="date">xxx</th>
+      </tr>
+      <tr>
+          <td class="para" colspan="2">sadsadsadsdasddasd</td>
+      </tr>
+      <script>
+        count1++;
+      </script>
+      {% endfor %}
+    </table>
+</div>
+
+<script>
+
+  function fetchpromise(){
+    fetch('http://64.227.101.67:5001/get_numusers')
+  .then(response => response.json())
+  .then(people => {
+  const numusers = people.numusers;
+  //console.log(numusers);
+  document.getElementById("legu").innerHTML = "Currrently have " + numusers + " customers registered for our newsletter!";
+  return
+});
+  }
+  clearInterval();
+  fetchpromise();
+  setInterval(fetchpromise, 60000);
+////////////////
+const newspromise = fetch('http://64.227.101.67:5001/get_news');
+newspromise.then(response => {
+  return response.json();
+}).then(people => {
+  const title = people.title;
+  const news = people.news;
+  const date = people.date;
+  console.log("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEEHEHEHEHEHEHEEHEHEHEHEHEHEEHEHEHEHEHEHE");
+  console.log(people);
+  console.log(people[0]);
+  console.log(people[0].title);
+  console.log(people[0].date);
+  //console.log(numusers);
+  for (var i = 0; i < count1; i++) {
+      let number = i;
+      document.getElementsByClassName("title")[number].innerHTML = people[number].title;
+      document.getElementsByClassName("para")[number].innerHTML = people[number].news;
+      document.getElementsByClassName("date")[number].innerHTML = people[number].date;
+  }
+});
+////////////
+const readypromise = fetch('http://64.227.101.67:5001/get_readiness');
+readypromise.then(response => {
+  return response.json();
+}).then(people => {
+  const title = people.metric;
+  const news = people.descr;
+  const date = people.readiness;
+  console.log("HEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEHEEHEHEHEHEHEHEEHEHEHEHEHEHEEHEHEHEHEHEHE");
+  console.log(people);
+  console.log(people[0]);
+  console.log(people[0].metric);
+  console.log(people[0].readiness);
+  console.log("5thboy"+people[4].descr);
+  //console.log(numusers);
+  for (var i = 0; i < count2; i++) {
+      let number = i;
+      document.getElementsByClassName("metric")[number].innerHTML = people[number].metric;
+      document.getElementsByClassName("descr")[number].innerHTML = people[number].descr;
+      document.getElementsByClassName("readiness")[number].innerHTML = "Readiness Level: "+people[number].readiness+ " Out of 10";
+      document.getElementsByClassName("readiness")[number].style.backgroundColor ="rgb(0,"+ (255/10)*people[number].readiness+",0)";
+      
+  }
+});
+
+
+
+</script>
+<style>
+.subready{
+  border-style: unset;
+}
+</style>
+</html>

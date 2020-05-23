@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Timer </title>
+<style>
+    body{
+    background-image:url('beanbg.jpg');}
+
+</style>
+</head>
+
+<body>
+
+<table class="timercontainer">
+    <tr class="timer">
+        <td colspan="2">Time Until Coffee Done</td>
+    </tr> 
+    <tr class="timer">
+        <td id="minutes">10</td>
+        <td id="seconds">00</td>
+    </tr>
+    <tr>
+        <td>Minutes</td>
+        <td>Seconds</td>
+    </tr>
+</table>
+
+</body>
+
+<script>
+//var item = document.querySelector('.timercontainer');
+const countmin=document.getElementById('minutes');
+const countsec=document.getElementById('seconds');
+const startingMinutes=10;
+let time = startingMinutes*60;
+//item.classList.remove('hidden');
+setInterval(timer, 1000);
+
+function timer() {
+  const minutes = Math.floor(time/60);
+  let seconds=time%60;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  countmin.innerHTML=`${minutes}`;
+  countsec.innerHTML=`${seconds}`;
+
+  time--;
+
+}
+</script>
+
+</html>

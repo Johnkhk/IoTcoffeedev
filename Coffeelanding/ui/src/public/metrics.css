@@ -1,0 +1,49 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  background-image:url('beanbg.jpg');
+}
+div{
+  width: 50%;
+  align-self: center;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+}
+header{
+  font-size: 30px;
+}
+table{
+  border-style: double;
+}
+td{
+  border-style: solid;
+  text-align: center;
+}
+#pnews{
+  align-self: center;
+  width: 100%;
+}
+#readydiv
+{
+  display: flex;
+  width:100%;
+  border-style: none;
+  align-items: center;
+}
+#table th{
+  width:200%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+.subready{
+  display: flex;
+  flex-direction: row;
+}

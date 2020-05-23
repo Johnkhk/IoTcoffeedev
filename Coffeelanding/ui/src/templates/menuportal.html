@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<style>
+  html {background-color:coral}
+  button {padding: 32px 16px;}
+</style>
+<html>
+<link rel="stylesheet" type="text/css" href="did_log_in.css">
+<p id = "user">You are logged in as: {{Username}}</p>
+<form action="/post_menu" method="POST">
+  <input name="Username" type="hidden" value={{Username}}></input>
+  <input name="input" type="hidden" value="Tracker"></input>
+  <button class="submit" value="Tracker">Tracker</input>
+</form>
+<form action="/post_menu" method="POST">
+  <input name="Username" type="hidden" value={{Username}}></input>
+  <input name="input" type="hidden" value="admin"></input>
+  <button class="submit" value="portal">Admin Portal</input>
+</form>
+<form action="/post_menu" method="POST">
+  <input name="Username" type="hidden" value={{Username}}></input>
+  <input name="input" type="hidden" value="Controller"></input>
+  <button class="submit" value="Controller">Controller</input>
+</form>
+</html>

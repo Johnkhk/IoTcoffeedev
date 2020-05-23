@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    html {background-color:blanchedalmond}
+    body{background-color: beige;}
+    tbody{background-color: mediumturquoise;}
+    thead{background-color: bisque;}
+  
+    </style>
+  <H1 align='center'>Welcome to the Tracker</H1>
+ 	<link rel="stylesheet" type="text/css" href="show_move.css">
+  <H1 align='center'>You are logged in as: {{Username}}</H1>
+  <head>
+    <title align='center'>Jetbot Moves</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 align='center' class="display-4 mb-4 mt-4">Jetbot Moves</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Timestamp</th>
+            <th>Direction</th>
+            <!--th>End Time</th!-->
+            <th>Status</th>
+          </tr>
+          <script>
+            var count = 0;
+            var myarray = new Array();
+          </script>
+        </thead>
+        <tbody>
+          {% for move in moves %}
+          <tr>
+            <td class = 'Username'>{{move.moveId}}</td>
+            <td class = 'Start Time'>{{move.startTime}}</td>
+            <td class = 'Direction'>{{move.direction}}</td>
+            <td class = 'Status'>{{move.status}}</td>
+          </tr>
+          <script>
+            count++;
+          </script>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <button align='center' onClick="window.location.reload();">Refresh Page</button>    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      const Url = 'http://localhost:5001/requested_moves'
+
+      function refresh() {
+        $.getJSON(Url,function(result){
+         // console.log("result");
+          console.log(result);
+        if(result.length > count)
+          window.location.reload();
+        for(let i = 0; i < result.length; i++)
+        {
+          //console.log(result[i]['moveId'])
+          document.getElementsByClassName("Username")[i].innerHTML = result[i]['moveId']; 
+          document.getElementsByClassName("Start Time")[i].innerHTML = result[i]['startTime']; 
+          document.getElementsByClassName("Direction")[i].innerHTML = result[i]['direction']; 
+          document.getElementsByClassName("Status")[i].innerHTML = result[i]['status']; 
+        }
+
+        });
+
+    // make Ajax call here, inside the callback call:
+        setTimeout(refresh, 1000);
+    // ...
+      }
+
+// initial call, or just call refresh directly
+      setTimeout(refresh, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title > Brewed Hot. Served Cold.</title>
+</head>
+
+
+
+  <body id="body">
+    <header id="wow">
+      <div class="containerx">
+        <img src = "polarbearnobg.jpeg" alt="logo" class="logo" height="50px", width="50px">
+        <p id="oki">Polar Coffee</p>
+        <nav>
+          <ul>
+            <li onclick="product()"><a>Product</a></li>
+            <li onclick="about()"><a>About</a></li>
+            <li onclick="pricing()"><a>Pricing</a></li>
+            <li onclick="login()"><a>Login</a></li>
+            <li onclick="signup_ac()"><a>Signup</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+  <header id="showcase">
+    <title>Polar Coffee</title>
+    <h1 id="smol"> Polar Coffee</h1>
+    <h1 class="bordered"> Brewed Hot.</br>Served Cold.</h1>
+    <p id="bordered">Efficiency and Quality: All in one coffee machine</p>
+    <a  class="button"onclick="sign_up()"> Get Started</a>
+    <a  class="button"onclick="metrics()"> Metrics</a>
+    <p class="readmore">Scroll down to find out more!</p>
+  </header>
+
+  <section id="section-a">
+    <header id=>It is difficult to get iced coffee without either sacrificing convenience or taste.</header>
+    <p>
+      Going to a coffee shop may result in long minutes waiting in line.</br> 
+      Using ice cubes dilutes the taste due to oxidization.</br>
+      Putting your coffee in your fridge overnight changes its flavor profile.</br>
+      Cold brew takes 10+ hours to make properly and isn't iced coffee.</br></br>
+    </p>
+      
+  </section>
+  <section id="section-b">
+    <header>We understand the pain point, Polar Coffee solves it</header>
+    <a>
+      Our coffee maker brews coffee hot, and delivers coffee freezing cold to the pot.<br/>
+      Hot or cold coffee options are available to those who like both.<br/>
+      IoT capabilities makes your experience conveninent with an app and website.<br/>
+      Affordable and beautiful, we have a compact and efficient design.
+      <br/><br/></a>
+  </section>
+  <section id="section-c">
+    <div class="box1">
+      <header>Product Vision</header>
+      For those coffee aficionados who would love convenient and quality coffee, made with their preferences, at any time of the day. Introducing Polar Coffee which is a B2C organization that’s different from Keurig because one does not have to sacrifice taste quality via dilution as our product electronically cools the coffee. 
+    </div>
+    <div class="box2">
+      <header>Who do we serve?</header>
+Those who love iced coffee.
+Those who love hot coffee.
+Those who need convenience.
+Those who enjoy luxury.
+Those who need quality
+Anyone that loves coffee!
+
+    </div>
+    <div class="box3">
+      <header>Outcome Statement</header>
+      During the interviewing phase, our customers were astonished about the quality of the coffee - the rich taste of caffeine at the tip of the tongue- and convenience of cold coffee - saving time as our customers prepare for their long day ahead and not worry about forgetting to put their coffee in the fridge overnight.
+    </div>
+  </section>
+</body>
+
+<style>
+#body{
+  margin:0;
+  background: #222;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
+
+.containerx{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#wow{
+  background: #f5f5dc;
+}
+
+#wow::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.logo{
+  float:left;
+  padding: 10px 0;
+}
+
+nav{
+  float: right;
+}
+
+nav ul{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+nav li{
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a{
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover{
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before{
+  width:100%;
+}
+
+</style>
+
+</html>
+
+<script>
+    function login() {
+      window.location.href ="login";
+    }
+    function sign_up(){
+      window.location.href ="sign_up";
+    }
+    function about(){
+      window.location.href ="about";
+    }
+    function setcoffee(){
+      window.location.href ="setcoffee";
+    }
+    function product(){
+      window.location.href ="product";
+    }
+    function pricing(){
+      window.location.href ="pricing";
+    }
+    function newac(){
+      window.location.href ="newac";
+    }
+    function signup_ac(){
+    window.location.href ="signup_ac";
+    }
+    function metrics(){
+    window.location.href ="metrics";
+    }
+  </script>

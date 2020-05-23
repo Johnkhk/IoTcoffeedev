@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="login.css">
+<div class="container">
+    <div class="form">
+        <form action="/loginx" method="POST">
+        <div class="form-title">
+          <h2>Welcome back</h2>
+          <p>Login</p>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" 
+                 name="username" 
+                 id="username"
+                 placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" 
+                 name="password" 
+                 id="password"
+                 placeholder="************">
+        </div>
+        <div class="form-group button">
+            <p style="font-family:times;color:red;">{{tag}}</p>
+          <button>Log In</button>
+         
+          <p><a href="/login">forgot password?</a></p>
+          <button type="button" onclick="signup_ac()">Sign Up</button>
+        </div>
+          
+    </form> 
+      
+      
+    </div>
+  </div>
+
+  <script>
+  function signup_ac(){
+    window.location.href ="signup_ac";
+  }
+</script>

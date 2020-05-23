@@ -1,0 +1,120 @@
+<!DOCTYPE html> <!-- Button to open the modal login form -->
+<link rel="stylesheet" type="text/css" href="controller.css">
+
+
+
+<body>
+  <h1 align='center'>Welcome to the Jetbot Cotroller</h1>
+  <h2 align='center'>You are logged in as: </h2>
+  <p id = "usr" align='center'>{{Username}}</p>
+  <p align='center'>Press arrow keys to control Jetbot</p>
+
+  <span class ="left">&#8592;</span>
+  <span class ="up">&#8593;</span>
+  <span class ="right">&#8594;</span>
+  <span class ="down">&#8595;</span>
+
+
+
+</body>
+<a><img src="https://i.ibb.co/GnnvSfv/c0facb164c02a5815d7efea4eb898a98-keyboard-arrow-keys-stroke-icon-by-vexels.png" alt="c0facb164c02a5815d7efea4eb898a98-keyboard-arrow-keys-stroke-icon-by-vexels" border="0"></a></html>
+
+<script>
+  //{"move": {"moveId": "3", startTime: 12367123, direction: "left", "userId":"savyas", "status": "Pending"}}
+  document.onkeydown = function (event) {
+    //console.log(Username)
+    let url = "http://localhost:5001/send_moves";
+    switch (event.keyCode) {
+      case 37:
+        console.log('Left key pressed');
+        let request1 = {};
+        request1["moveID"] = "MOVELEFT"
+        //request["initiateTime"] = "sometime";
+        request1["startTime"] = Date();
+        //request["endTime"] = "sometime";
+        request1["direction"] = "left";
+        request1["userId"] = document.getElementById("usr").innerHTML;
+        request1["status"] = "Pending";
+        console.log(request1);
+
+        fetch(url, 
+        {
+          method: "POST",
+          body: JSON.stringify(request1) // For Post request, data goes as part of body. Send your request data as a JSON string.
+          // Also, request.toString() will not work. It will return the string "[object Object]"
+        })
+          .then((response1) => {
+            console.log(response1)
+          })
+        break;
+      case 38:
+      console.log('Forward key pressed');
+        let request2 = {};
+        request2["moveID"] = "MOVEFORWARD"
+        //request["initiateTime"] = "sometime";
+        request2["startTime"] = Date();
+        //request["endTime"] = "sometime";
+        request2["direction"] = "forward";
+        request2["userId"] = document.getElementById("usr").innerHTML;
+        request2["status"] = "Pending";
+        console.log(request2);
+
+        fetch(url, 
+        {
+          method: "POST",
+          body: JSON.stringify(request2) // For Post request, data goes as part of body. Send your request data as a JSON string.
+          // Also, request.toString() will not work. It will return the string "[object Object]"
+        })
+          .then((response2) => {
+            console.log(response2)
+          })
+        break;
+      case 39:
+      console.log('Right key pressed');
+        let request3 = {};
+        request3["moveID"] = "MOVERIGHT"
+        //request["initiateTime"] = "sometime";
+        request3["startTime"] = Date();
+        //request["endTime"] = "sometime";
+        request3["direction"] = "right";
+        request3["userId"] = document.getElementById("usr").innerHTML;
+        request3["status"] = "Pending";
+        console.log(request3);
+
+        fetch(url, 
+        {
+          method: "POST",
+          body: JSON.stringify(request3) // For Post request, data goes as part of body. Send your request data as a JSON string.
+          // Also, request.toString() will not work. It will return the string "[object Object]"
+        })
+          .then((response3) => {
+            console.log(response3)
+          })
+        break;
+      case 40:
+        console.log('Back key pressed');
+        let request4 = {};
+        request4["moveID"] = "MOVEBACK"
+        //request["initiateTime"] = "sometime";
+        request4["startTime"] = Date();
+        //request["endTime"] = "sometime";
+        request4["direction"] = "back";
+        request4["userId"] = document.getElementById("usr").innerHTML;
+        request4["status"] = "Pending";
+        console.log(request4);
+
+        fetch(url, 
+        {
+          method: "POST",
+          body: JSON.stringify(request4) // For Post request, data goes as part of body. Send your request data as a JSON string.
+          // Also, request.toString() will not work. It will return the string "[object Object]"
+        })
+          .then((response4) => {
+            console.log(response4)
+          })
+        break;
+
+    }
+
+  }
+</script>
